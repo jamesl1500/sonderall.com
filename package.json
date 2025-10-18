@@ -1,0 +1,20 @@
+{
+  "name": "sonderall-monorepo",
+  "version": "1.0.0",
+  "description": "Sonderall website and mobile app",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "James Latten Jr",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

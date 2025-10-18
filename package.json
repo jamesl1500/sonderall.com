@@ -9,7 +9,8 @@
     "packages/*"
   ],
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "echo \"Error: no test specified\" && exit true"
   },
   "keywords": [],
   "author": "James Latten Jr",

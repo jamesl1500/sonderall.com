@@ -1,0 +1,25 @@
+/**
+ * Header styles
+ * Styles for the main header component
+ */
+
+// Import variables from the main styles file
+ .auth-header-container{
+    width: 100%;
+    padding: $spacing-4 $spacing-6;
+    background: transparent;
+
+    .auth-header-inner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+        margin: 0 auto;
+        height: 50px;
+
+        background: $color-white;
+        box-shadow: $shadow-md;
+        border-bottom: 1px solid $border-color;
+        border-radius: $border-radius-sm;
+    }
+ }

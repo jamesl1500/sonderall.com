@@ -1,0 +1,475 @@
+// ============================================================================
+// Sonderall Design System - Core Variables & Utilities
+// ============================================================================
+
+@use '_variables' as *;
+
+// Buttons
+@use 'libs/buttons';
+
+// Forms & Inputs
+@use 'libs/forms';
+
+// Cards
+@use 'libs/cards';
+
+// Modals
+@use 'libs/modals';
+
+// Tooltips
+@use 'libs/tooltips';
+
+// Dropdowns
+@use 'libs/dropdowns';
+
+// Alerts & Notifications
+@use 'libs/alerts';
+
+// Headers & Footers
+@use 'templates/header';
+@use 'templates/footer';
+
+// Navigation Bars
+@use 'libs/navigation';
+
+// Globals
+*, html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// ============================================================================
+// Login & Register Page Styles
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Auth Layout Base
+// ----------------------------------------------------------------------------
+
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-background;
+  font-family: $font-primary;
+}
+
+.auth-header {
+  position: absolute;
+  top: $spacing-6;
+  left: $spacing-6;
+  z-index: $z-fixed;
+
+  h1 {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    margin: 0;
+  }
+}
+
+.auth-footer {
+  margin-top: $spacing-10;
+  padding: $spacing-4 $spacing-6;
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+  z-index: $z-fixed;
+  color: black;
+}
+
+.auth-body {
+  flex: 1;
+  display: flex;
+  min-height: 100vh;
+}
+
+// ----------------------------------------------------------------------------
+// Split Screen Layout
+// ----------------------------------------------------------------------------
+
+.auth-body-inner {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.auth-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  
+  &.auth-column-left {
+    background: lighten($color-primary, 10%);
+    position: relative;
+    overflow: hidden;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: $spacing-12;
+    color: white;
+    text-align: left;
+
+    // Optional background image overlay
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1617575521317-d2974f3b56d2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1974'); // You can add your image here
+      background-size: cover;
+      background-position: center;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    // Content overlay
+    > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-4;
+      line-height: $line-height-tight;
+    }
+
+    p {
+      font-size: $font-size-lg;
+      opacity: 0.9;
+      line-height: $line-height-relaxed;
+      max-width: 400px;
+    }
+  }
+
+  &.auth-column-right {
+    background-color: $color-background;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-12;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Login Form Styles
+// ----------------------------------------------------------------------------
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+  
+  .login-form-header {
+    text-align: center;
+    margin-bottom: $spacing-8;
+
+    h3 {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      color: $color-text;
+      margin-bottom: $spacing-2;
+    }
+
+    p {
+      font-size: $font-size-base;
+      color: $color-text-muted;
+    }
+  }
+
+  .login-form {
+    .form-group {
+      margin-bottom: $spacing-6;
+
+      label {
+        display: block;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text;
+        margin-bottom: $spacing-2;
+      }
+
+      input {
+        width: 100%;
+        padding: $spacing-3 $spacing-4;
+        border: $border-width solid $border-color;
+        border-radius: $border-radius-md;
+        font-size: $font-size-base;
+        font-family: $font-primary;
+        background-color: $color-background;
+        color: $color-text;
+        transition: all $transition-fast;
+
+        &:focus {
+          outline: none;
+          border-color: $color-primary;
+          box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+        }
+
+        &::placeholder {
+          color: $color-neutral-400;
+        }
+
+        &:disabled {
+          background-color: $color-neutral-50;
+          color: $color-neutral-400;
+          cursor: not-allowed;
+        }
+      }
+
+      .form-error {
+        margin-top: $spacing-2;
+        font-size: $font-size-sm;
+        color: $color-error;
+      }
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-6;
+
+      .remember-me {
+        display: flex;
+        align-items: center;
+        gap: $spacing-2;
+
+        input[type="checkbox"] {
+          width: auto;
+          margin: 0;
+        }
+
+        label {
+          margin: 0;
+          font-size: $font-size-sm;
+          color: $color-text-muted;
+          cursor: pointer;
+        }
+      }
+
+      .forgot-password {
+        font-size: $font-size-sm;
+        color: $color-primary;
+        text-decoration: none;
+        transition: color $transition-fast;
+
+        &:hover {
+          color: $color-primary-dark;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .login-button {
+      width: 100%;
+      padding: $spacing-3 $spacing-4;
+      background-color: $color-primary;
+      color: white;
+      border: none;
+      border-radius: $border-radius-md;
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      font-family: $font-primary;
+      cursor: pointer;
+      transition: all $transition-fast;
+      margin-bottom: $spacing-6;
+
+      &:hover {
+        background-color: $color-primary-dark;
+        transform: translateY(-1px);
+        box-shadow: $shadow-md;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        background-color: $color-neutral-300;
+        color: $color-neutral-500;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .form-divider {
+      text-align: center;
+      margin: $spacing-6 0;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: $border-color;
+      }
+
+      span {
+        background-color: $color-background;
+        padding: 0 $spacing-4;
+        color: $color-text-muted;
+        font-size: $font-size-sm;
+      }
+    }
+
+    .social-login {
+      .social-button {
+        width: 100%;
+        padding: $spacing-3 $spacing-4;
+        border: $border-width solid $border-color;
+        border-radius: $border-radius-md;
+        background-color: $color-background;
+        color: $color-text;
+        font-size: $font-size-base;
+        font-family: $font-primary;
+        cursor: pointer;
+        transition: all $transition-fast;
+        margin-bottom: $spacing-3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $spacing-3;
+
+        &:hover {
+          background-color: $color-neutral-50;
+          border-color: $color-neutral-300;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .login-footer {
+    text-align: center;
+    margin-top: $spacing-6;
+    padding-top: $spacing-6;
+    border-top: 1px solid $border-color;
+
+    p {
+      font-size: $font-size-sm;
+      color: $color-text-muted;
+
+      a {
+        color: $color-primary;
+        text-decoration: none;
+        font-weight: $font-weight-medium;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Responsive Design
+// ----------------------------------------------------------------------------
+
+@media (max-width: $breakpoint-lg) {
+  .auth-column {
+    &.auth-column-left {
+      padding: $spacing-8;
+      
+      h2 {
+        font-size: $font-size-3xl;
+      }
+
+      p {
+        font-size: $font-size-base;
+      }
+    }
+
+    &.auth-column-right {
+      padding: $spacing-8;
+    }
+  }
+
+  .login-form-container {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .auth-body-inner {
+    flex-direction: column;
+  }
+
+  .auth-column {
+    &.auth-column-left {
+      min-height: 40vh;
+      padding: $spacing-6;
+
+      h2 {
+        font-size: $font-size-2xl;
+      }
+    }
+
+    &.auth-column-right {
+      padding: $spacing-6;
+    }
+  }
+
+  .auth-header {
+    top: $spacing-4;
+    left: $spacing-4;
+
+    h1 {
+      font-size: $font-size-xl;
+    }
+  }
+
+  .auth-footer {
+    position: static;
+    transform: none;
+    text-align: center;
+    padding: $spacing-4;
+  }
+
+  .login-form-container {
+    max-width: 100%;
+
+    .login-form-header {
+      margin-bottom: $spacing-6;
+
+      h3 {
+        font-size: $font-size-2xl;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .auth-column {
+    &.auth-column-left {
+      padding: $spacing-4;
+      
+      h2 {
+        font-size: $font-size-xl;
+      }
+    }
+
+    &.auth-column-right {
+      padding: $spacing-4;
+    }
+  }
+
+  .login-form-container {
+    .form-options {
+      flex-direction: column;
+      gap: $spacing-3;
+      align-items: flex-start;
+    }
+  }
+}

@@ -10,6 +10,9 @@ export const metadata = {
   title: "Auth - " + process.env.NEXT_PUBLIC_APP_NAME,
 };
 
+// Import templates
+import AuthHeader from "@/components/templates/auth/AuthHeader";
+
 export default function AuthLayout({
   children,
 }: Readonly<{
@@ -18,13 +21,10 @@ export default function AuthLayout({
   return (
     <div className="auth-layout">
       <div className="auth-header">
-        <h1>Sonderall</h1>
+        <AuthHeader />
       </div>
       <div className="auth-body">
         {children}
-      </div>
-      <div className="auth-footer">
-        &copy; {new Date().getFullYear()} Sonderall. All rights reserved.
       </div>
     </div>
   );

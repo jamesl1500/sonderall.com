@@ -44,12 +44,63 @@ export default function LoginForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <input type="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" name="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Login</button>
+    <div className="login-form-container">
+      <div className="login-form-header">
+        <h3>Sign In</h3>
+        <p>Welcome back! Please sign in to your account.</p>
+      </div>
+      
+      <form className="login-form" onSubmit={handleLogin}>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input 
+            type="email" 
+            id="email"
+            name="email" 
+            placeholder="Enter your email" 
+            required 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} 
+          />
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input 
+            type="password" 
+            id="password"
+            name="password" 
+            placeholder="Enter your password" 
+            required 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} 
+          />
+        </div>
+        
+        <div className="form-options">
+          <div className="remember-me">
+            <input type="checkbox" id="remember" name="remember" />
+            <label htmlFor="remember">Remember me</label>
+          </div>
+          <a href="/forgot_password" className="forgot-password">
+            Forgot password?
+          </a>
+        </div>
+        
+        <button type="submit" className="login-button">
+          Sign In
+        </button>
       </form>
+      
+      <div className="login-footer">
+        <p>
+          Don't have an account? <a href="/signup">Sign up</a>
+        </p>
+      </div>
+
+      <div className="auth-footer">
+        &copy; {new Date().getFullYear()} Sonderall. All rights reserved.
+      </div>
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function AuthLoginPage() {
     <div className="auth-body-inner">
         <div className="auth-column auth-column-left">
             <h2>Welcome Back!</h2>
-            <p>Please log in to your account to continue.</p>
+            <p>Sign in to access your personal journal, track your moods, and continue your mindfulness journey with Sonderall.</p>
         </div>
         <div className="auth-column auth-column-right">
             <LoginForm />

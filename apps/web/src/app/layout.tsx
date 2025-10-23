@@ -9,10 +9,20 @@ export const metadata = {
   creator: process.env.NEXT_PUBLIC_APP_AUTHOR,
   publisher: process.env.NEXT_PUBLIC_APP_NAME,
   applicationName: process.env.NEXT_PUBLIC_APP_NAME,
-  colorScheme: 'light dark',
   metadataBase: process.env.NEXT_PUBLIC_APP_URL ? new URL(process.env.NEXT_PUBLIC_APP_URL) : undefined,
 };
 
+/**
+ * Import Main Styles
+ */
+import "@/styles/styles.scss";
+
+/**
+ * RootLayout
+ * Main layout component for the web application.
+ * 
+ * @module app/layout
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
